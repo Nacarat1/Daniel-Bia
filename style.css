@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+}
+.painel {
+    background-color: white;
+    width: 90vw;
+    max-width: 500px;
+    height: 90vh;
+    max-height: 850px;
+    border-radius: 20px;
+    text-align: center;
+    padding: 5vh 2vw;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.painel h2 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+.painel h3, .painel h4 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.text-box, .text-box2 {
+    width: 250px;
+    height: auto;
+    padding: 15px;
+    font-size: 16px;
+    color: white;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+.text-box {
+    right: 50px;
+    text-align: left;
+}
+.text-box2 {
+    left: 50px;
+    text-align: left;
+}
+.text-box ul, .text-box2 ul {
+    list-style-type: none;
+}
+.text-box li, .text-box2 li {
+    margin-bottom: 10px;
+}
+.text-box .item5, .text-box .item8, .text-box .item9 {
+    color: green;
+}
+.text-box2 .item5 {
+    color: green;
+}
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 315px;
+    cursor: pointer;
+}
+.video-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.video-container iframe {
+    display: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+h1 {
+    margin-bottom: 10%;
+}
+h2 {
+    margin-top: 10%;
+}
