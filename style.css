@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+
 html,
 body {
   width: 100%;
@@ -14,6 +16,7 @@ body {
   background-color: red;
   overflow-x: hidden;
   overflow-y: auto;
+  font-family: Arial, sans-serif;
 }
 
 .container {
@@ -23,6 +26,7 @@ body {
   gap: 20px;
   position: relative;
 }
+
 .painel {
   background-color: white;
   width: 90vw;
@@ -32,22 +36,33 @@ body {
   border-radius: 20px;
   text-align: center;
   padding: 5vh 2vw;
-  font-family: "Trebuchet MS", Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1s ease-out;
 }
+
+.painel h1,
+.painel h2,
+.painel h3,
+.painel h4 {
+  font-family: "Dancing Script", cursive;
+}
+
 .painel h2 {
   margin-top: 20px;
   margin-bottom: 5px;
 }
+
 .painel h3,
 .painel h4 {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
 .text-box,
 .text-box2 {
   width: 250px;
@@ -55,33 +70,40 @@ body {
   padding: 15px;
   font-size: 16px;
   color: white;
-  font-family: Arial, sans-serif;
   position: relative;
+  animation: fadeInUp 1s ease-out;
 }
+
 .text-box {
   right: 50px;
   text-align: left;
 }
+
 .text-box2 {
   left: 50px;
   text-align: left;
 }
+
 .text-box ul,
 .text-box2 ul {
   list-style-type: none;
 }
+
 .text-box li,
 .text-box2 li {
   margin-bottom: 10px;
 }
+
 .text-box .item5,
 .text-box .item8,
 .text-box .item9 {
   color: green;
 }
+
 .text-box2 .item5 {
   color: green;
 }
+
 .video-container {
   position: relative;
   width: 100%;
@@ -89,22 +111,37 @@ body {
   height: 315px;
   cursor: pointer;
 }
+
 .video-container img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
 }
+
 .video-container iframe {
   display: none;
   width: 100%;
   height: 100%;
   border-radius: 10px;
 }
+
 h1 {
   margin-bottom: 10%;
 }
+
 h2 {
   margin-top: 10%;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 750px) {
@@ -117,10 +154,9 @@ h2 {
   .painel {
     order: 1;
     margin-top: 30px;
-
     height: auto;
     max-height: none;
-    margin: 40px 0; /* Espaço acima e abaixo do painel */
+    margin: 40px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
