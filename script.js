@@ -1,3 +1,86 @@
+// --- LÓGICA DE SALVAMENTO ---
+function salvarAventuras() {
+  const aventurasSalvas = [];
+  const todasAsLi = document.querySelectorAll("#lista1 li, #lista2 li");
+
+  todasAsLi.forEach((li) => {
+    aventurasSalvas.push({
+      texto: li.textContent,
+      cor: li.classList.contains("verde") ? "verde" : "",
+      lista: li.parentNode.id,
+    });
+  });
+
+  localStorage.setItem("aventuras", JSON.stringify(aventurasSalvas));
+}
+
+function carregarAventuras() {
+  const aventurasSalvas = JSON.parse(localStorage.getItem("aventuras"));
+
+  if (aventurasSalvas && aventurasSalvas.length > 0) {
+    aventurasSalvas.forEach((aventura) => {
+      const novoLi = document.createElement("li");
+      novoLi.textContent = aventura.texto;
+      if (aventura.cor === "verde") {
+        novoLi.classList.add("verde");
+      }
+      document.getElementById(aventura.lista).appendChild(novoLi);
+    });
+  } else {
+    // Se não houver nada salvo, carrega as listas padrão com as cores corretas
+    const listaPadrao1 = [
+      { texto: "Saltar de Asa Delta", cor: "" },
+      { texto: "Churrasco em família", cor: "" },
+      { texto: "Vinagrete feito pela Bia", cor: "" },
+      { texto: "Escalar a pedra da Gávea", cor: "" },
+      { texto: "Ver NFL", cor: "verde" },
+      { texto: "Assistir Fragmentado", cor: "" },
+      { texto: "Ler o Manifesto Comunista", cor: "" },
+      { texto: "Ir ao Maracanã", cor: "verde" },
+      { texto: "Ver álbuns de fotos do outro", cor: "verde" },
+      { texto: "Passear com a Telma", cor: "" },
+      { texto: "Assistir os vencedores do Oscar - Filme estrangeiro", cor: "" },
+    ];
+    const listaPadrao2 = [
+      { texto: "Sair de madrugada para cachoeira", cor: "" },
+      { texto: "Ver o nascer do sol na praia", cor: "" },
+      { texto: "Ficar em Araçatiba", cor: "" },
+      { texto: "Treinar Boxe juntos", cor: "" },
+      { texto: "Treino juntos", cor: "verde" },
+      { texto: "Aula experimental de Jiu Jitsu", cor: "" },
+      { texto: "Visitar as igrejas do avô", cor: "" },
+      { texto: 'Nomes dos filhos ""', cor: "" },
+      { texto: "Parque inflável/jump", cor: "" },
+      { texto: "Comer na Tia Léia", cor: "" },
+      { texto: "Assistir a Trilogia do Batman", cor: "" },
+    ];
+
+    listaPadrao1.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item.texto;
+      if (item.cor === "verde") {
+        li.classList.add("verde");
+      }
+      document.getElementById("lista1").appendChild(li);
+    });
+    listaPadrao2.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item.texto;
+      if (item.cor === "verde") {
+        li.classList.add("verde");
+      }
+      document.getElementById("lista2").appendChild(li);
+    });
+
+    salvarAventuras(); // Salva as listas padrão pela primeira vez
+  }
+}
+
+// Chame esta função ao carregar a página
+document.addEventListener("DOMContentLoaded", carregarAventuras);
+
+// --- CÓDIGO EXISTENTE ATUALIZADO ---
+
 function playVideo(container) {
   container.querySelector("img").style.display = "none";
   container.querySelector("iframe").style.display = "block";
@@ -46,3 +129,37 @@ function calcularTempo() {
 
 setInterval(calcularTempo, 1000);
 calcularTempo();
+
+function mostrarInput() {
+  const inputDiv = document.getElementById("inputContainer");
+  inputDiv.style.display = inputDiv.style.display === "flex" ? "none" : "flex";
+}
+
+let alternar = true;
+function adicionarItem() {
+  const texto = document.getElementById("novoItemInput").value.trim();
+  if (!texto) return;
+
+  const todasLis = [...document.querySelectorAll("#lista1 li, #lista2 li")];
+  const jaExiste = todasLis.find((li) => li.textContent === texto);
+
+  if (jaExiste) {
+    jaExiste.classList.add("verde");
+    salvarAventuras();
+    return;
+  }
+
+  const novoLi = document.createElement("li");
+  novoLi.textContent = texto;
+
+  if (alternar) {
+    document.getElementById("lista1").appendChild(novoLi);
+  } else {
+    document.getElementById("lista2").appendChild(novoLi);
+  }
+
+  alternar = !alternar;
+  document.getElementById("novoItemInput").value = "";
+  document.getElementById("inputContainer").style.display = "none";
+  salvarAventuras(); // Salva as mudanças
+}

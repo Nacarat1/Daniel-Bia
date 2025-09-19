@@ -133,11 +133,59 @@ h2 {
   margin-top: 10%;
 }
 
+.toggle-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #ff4d4d;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: #e60000;
+}
+
+.input-section {
+  margin-top: 10px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-section input {
+  padding: 5px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  width: 80%;
+}
+
+.input-section button {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-section button:hover {
+  background-color: #45a049;
+}
+
+.verde {
+  color: green !important;
+}
+
 @keyframes fadeInUp {
   0% {
     opacity: 0;
     transform: translateY(30px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
