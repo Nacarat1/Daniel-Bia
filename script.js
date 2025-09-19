@@ -43,7 +43,7 @@ function calcularTempo() {
 
   document.getElementById(
     "resultado"
-  ).innerText = `${anos} anos - ${meses} mês - ${dias} dias - ${horas}:${minutos}:${segundos}`;
+  ).innerText = `${anos} anos - ${meses} meses - ${dias} dias - ${horas}:${minutos}:${segundos}`;
 }
 
 // Inicia o contador
